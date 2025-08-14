@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: o;
+}
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.563), rgba(0, 0, 0,0.563)),url('https://miro.medium.com/v2/format:webp/0*EfkvjCOb8HA-dKNR');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.container{
+    
+    background-color: rgb(255, 255, 255);
+    width: 15rem;
+    height: 45vh;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 7rem;
+    
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+
+.login-btn{
+    text-align: center;
+    width: 5rem;
+    padding: 12px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-left: 5rem;
+    
+}
+
+#loginForm{
+    margin-left: 2rem;
+
+}
+
+
+
+
