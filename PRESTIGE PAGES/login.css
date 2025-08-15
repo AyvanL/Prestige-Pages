@@ -13,7 +13,7 @@ body{
 .container{
     
     background-color: rgb(255, 255, 255);
-    width: 15rem;
+    width: 19rem;
     height: 45vh;
     border-radius: 20px;
     margin: auto;
@@ -39,12 +39,12 @@ h1{
     transition: background-color 0.3 ease;
     margin-top: 20px;
     border-radius: 10px;
-    margin-left: 5rem;
+    margin-left: 3rem;
     
 }
 
 #loginForm{
-    margin-left: 2rem;
+    margin-left: 4rem;
 
 }
 

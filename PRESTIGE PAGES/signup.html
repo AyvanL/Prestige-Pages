@@ -3,126 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Reg Form</title>
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
     <img src="Logo.png" alt="logo">
     <div class="container">
-        <div class="content">
-            <form id="register-form">
-        <div class="register-form">
-                <h2>Sign Up</h2>
-                <div class="instruction"><h3>Please fill all the fields to register.</h3></div>
+        
+        <h1 style="padding-top: 4   rem;">Sign up</h1>
+        
+        <form id="loginForm">
+                <div class="content">
+                <div>
+                <label for="email">Email:</label><br>   
+                <input type="email" id="email" name="email" required><br>
             
-            <div class="input-group">
-                <input name="firstname" id="firstname" type="text" placeholder="Firstname" required>
-                <input name="Middlename" id="Middlename" type="text" placeholder="Middlename" required>
-                <input name="Lastname" id="Lastname" type="text" placeholder="Lastname" required>
-            </div> 
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+                </div>
+ 
+                <div>
+                  
+                  <button class="login-btn" type="submit">Sign Up</button>
+                  <p style="margin-left: 3.5rem; padding-top: 1rem;">already a member? <a href="login.html">login</a></p>
+                  
+                </div>
 
-            <div class="input-group">
-                <input name="username" id="username" type="text" placeholder="Username" required>
-                <input name="phonenumber" id="phonenumber" type="text" placeholder="Phone Number" required>
-            </div>
+                
+          </div>
+            <img src="google_icon.png" alt="icon" width="45rem" class="Gicon">
+                
+        </form>
 
-            <div class="input-group">
-                <input name="email" id="email" type="text" placeholder="E-mail" required>
-            </div>
+        
+                
             
-            <div class="input-group">
-                <select name="gender" id="gender" required>
-                <option value="">Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Others">Others</option>
-  </select>
-  <input type="text" id="datepicker" placeholder="Birthdate: MM/DD/YYYY" required>
-</div>
-
-
-            <div class="input-group">
-                <textarea name="homeaddress" id="homeadress">Home Address</textarea>
-                <textarea name="officeaddress" id="officeaddress">Office Address</textarea>
-            </div>
-
-            <div class="input-group">
-              <input name="password" id="password" type="password" placeholder="Password">
-              <input name="confirmpassword" id="confirmpassword" type="password" placeholder="Confirm Password">
-            </div> 
-
-            <div class="register-btn" id="registerBtn">Register</div>
-        </div>
-    </form>
-</div>
-        </div>
     </div>
 
     <script type="module">
-  // Firebase SDK imports
+  // Firebase imports
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-  // Your Firebase config (replace storageBucket if needed)
+  // Your Firebase config (fixed storageBucket)
   const firebaseConfig = {
     apiKey: "AIzaSyCC_14beDBhudrtoAIFqc29TCMY5zoa4AA",
     authDomain: "prestige-pages.firebaseapp.com",
+    databaseURL: "https://prestige-pages-default-rtdb.firebaseio.com",
     projectId: "prestige-pages",
     storageBucket: "prestige-pages.appspot.com",
     messagingSenderId: "1065922943021",
-    appId: "1:1065922943021:web:e5829dd09e206063b500a4"
+    appId: "1:1065922943021:web:e5829dd09e206063b500a4",
+    measurementId: "G-V0E6PXN1Z5"
   };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const auth = getAuth(app);
 
-  // Handle form submission
-  const registerBtn = document.getElementById("registerBtn");
-  registerBtn.addEventListener("click", async () => {
-    // Get all input values
-    const firstname = document.getElementById("firstname").value;
-    const middlename = document.getElementById("Middlename").value;
-    const lastname = document.getElementById("Lastname").value;
-    const username = document.getElementById("username").value;
-    const phonenumber = document.getElementById("phonenumber").value;
+  // Handle account creation
+  document.getElementById("loginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
     const email = document.getElementById("email").value;
-    const gender = document.getElementById("gender").value;
-    const birthdate = document.getElementById("datepicker").value;
-    const homeaddress = document.getElementById("homeadress").value;
-    const officeaddress = document.getElementById("officeaddress").value;
     const password = document.getElementById("password").value;
-    const confirmpassword = document.getElementById("confirmpassword").value;
 
-    // Optional: password validation
-    if(password !== confirmpassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    try {
-      // Add a new document in "users" collection
-      const docRef = await addDoc(collection(db, "users"), {
-        firstname,
-        middlename,
-        lastname,
-        username,
-        phonenumber,
-        email,
-        gender,
-        birthdate,
-        homeaddress,
-        officeaddress,
-        password  // ⚠️ In production, never store plain passwords; use Firebase Auth
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Account created successfully! Welcome " + userCredential.user.email);
+        document.getElementById("loginForm").reset();
+      })
+      .catch((error) => {
+        alert("Account creation failed: " + error.message);
       });
-      alert("Registration successful! ID: " + docRef.id);
-      document.getElementById("register-form").reset();
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("Registration failed: " + error.message);
-    }
   });
 </script>
+
+
 
 </body>
 </html>

@@ -10,47 +10,53 @@ body{
     position: relative;
 }
 
-
-
-.register-form{
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgb(0, 0, 0, 0, 0.2);
-    width: 400px;
-    margin-left: 34rem;
-}
-
-.register-form h2{
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.input-group{
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.input-group input, .input-group select, .input-group textarea{
-    width: 100%;
-    padding: 10px;
-    margin: 5px;
-    border:  1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.register-btn{
+.container{
+    
+    background-color: rgb(255, 255, 255);
+    width: 30rem;
+    height: 45vh;
+    border-radius: 20px;
     margin: auto;
+    margin-top: 7rem;
+    
+}
+
+h1{
+    margin-left: 2rem;
+    padding-top: 4rem;
+    margin-bottom: 5px;
+    font-size: 50px;
+}
+
+
+.login-btn{
     text-align: center;
-    width: 50%;
-    padding: 12px;
+    width: 10rem;
+    padding: 20px;
     border: none;
-    border-radius: 10px;
-    background-color: #000000;
+    background-color: black;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
+    transition: background-color 0.3 ease;
+    border-radius: 25px;
+    margin-left: 3rem;
+    
 }
+
+#loginForm{
+    margin-left: 2rem;
+
+}
+
+.content{
+    display: flex;
+}
+
+.Gicon{
+    padding-top: 1rem;
+}
+
+
+
+
